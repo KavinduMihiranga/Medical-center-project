@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<TabPane prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PharmacyFormController">
+   <tabs>
+      <Tab text="Add Drug">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="972.0">
+               <children>
+                  <GridPane layoutX="14.0" layoutY="57.0" prefHeight="200.0" prefWidth="1100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="320.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="320.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="320.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXTextField fx:id="txtDrugName" promptText="Drug Name" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="txtTradeName" promptText=" Trade Name" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label fx:id="lblDrugId" prefHeight="25.0" prefWidth="320.0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <GridPane prefHeight="31.0" prefWidth="307.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXButton fx:id="btnUpdateDrug" buttonType="RAISED" onAction="#updateDrug" prefWidth="100.0" style="-fx-background-color: #3498db;" text="Update" textFill="#f8f8f8">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#3b30a1" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                              <JFXButton fx:id="btnDeleteDrug" buttonType="RAISED" onAction="#deleteDrug" prefWidth="100.0" style="-fx-background-color: #e74c3c;" text="Delete" textFill="#f8f8f8" GridPane.columnIndex="1">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#a43131" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                              <JFXButton fx:id="btnAddDrug" buttonType="RAISED" onAction="#addDrug" prefWidth="100.0" style="-fx-background-color: #27ae60;" text="Add" textFill="#f8f8f8" GridPane.columnIndex="2">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#248a3a" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                           </children>
+                        </GridPane>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4">
+                           <children>
+                              <JFXButton buttonType="RAISED" onAction="#logOut" style="-fx-background-color: #c0392b;" text="Log Out" textFill="#f8f8f8">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <TableView fx:id="tblDrug" layoutX="14.0" layoutY="252.0" prefHeight="200.0" prefWidth="1100.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="252.0">
+                     <columns>
+                        <TableColumn fx:id="colDrugId" prefWidth="230.0" text="Drug Id" />
+                        <TableColumn fx:id="colTradeName" prefWidth="500.0" text="Trade Name" />
+                        <TableColumn fx:id="colDrugName" prefWidth="350.0" text="Drug Name" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Suppliers">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tblSupplier" layoutX="-5.0" layoutY="310.0" prefHeight="331.0" prefWidth="1100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0">
+                     <columns>
+                        <TableColumn fx:id="colSupplierId" prefWidth="540.0" text="Supplier Id" />
+                        <TableColumn fx:id="colSupplierName" prefWidth="540.0" text="Supplier Name" />
+                     </columns>
+                  </TableView>
+                  <GridPane layoutY="62.0" prefHeight="200.0" prefWidth="1100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="320.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="320.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="320.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXTextField fx:id="txtSupplierName" promptText="Supplier Name" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+                        <GridPane prefHeight="31.0" prefWidth="307.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXButton fx:id="btnUpdateSupplier" buttonType="RAISED" onAction="#updateSupplier" prefWidth="100.0" style="-fx-background-color: #3498db;" text="Update" textFill="WHITE">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#4b26c7" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                              <JFXButton fx:id="btnDeleteSupplier" buttonType="RAISED" onAction="#deleteSupplier" prefWidth="100.0" style="-fx-background-color: #e74c3c;" text="Delete" textFill="WHITE" GridPane.columnIndex="1">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#c7264e" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                              <JFXButton fx:id="btnAddSupplier" buttonType="RAISED" onAction="#addSupplier" prefWidth="100.0" style="-fx-background-color: #27ae60;" text="Add" textFill="WHITE" GridPane.columnIndex="2">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#26c744" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                           </children>
+                        </GridPane>
+                        <JFXButton buttonType="RAISED" onAction="#logOut" prefWidth="100.0" style="-fx-background-color: #c0392b;" text="Log Out" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="RIGHT">
+                           <ripplerFill>
+                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </RadialGradient>
+                           </ripplerFill>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <Label fx:id="lblSupplierId" prefHeight="21.0" prefWidth="341.0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Stock">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tblStock" layoutX="4.0" layoutY="283.0" prefHeight="370.0" prefWidth="1100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0">
+                     <columns>
+                        <TableColumn fx:id="colStockId" prefWidth="130.0" text="Stock Id" />
+                        <TableColumn fx:id="colStockDrugId" prefWidth="130.0" text="Drug Id" />
+                        <TableColumn fx:id="colDrugTradeName" prefWidth="170.0" text="Trade Name" />
+                        <TableColumn fx:id="colStockSupplierName" prefWidth="200.0" text="Supplier Name" />
+                        <TableColumn fx:id="colCost" prefWidth="130.0" text="Cost" />
+                        <TableColumn fx:id="colSupplyDate" prefWidth="150.0" text="Supply Date" />
+                        <TableColumn fx:id="colQty" prefWidth="150.0" text="Qty" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <GridPane layoutX="5.0" layoutY="41.0" prefHeight="200.0" prefWidth="1100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="320.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="320.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="320.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXTextField fx:id="txtDrugId" promptText="Drug Id" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="txtDrugTradeName" promptText=" Trade Name" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="txtCost" layoutX="10.0" layoutY="12.0" promptText="Cost" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="txtSupplyDate" layoutX="375.0" layoutY="47.0" promptText="Supply Date" GridPane.rowIndex="3" />
+                        <JFXTextField fx:id="txtStockSupplierName" layoutX="713.0" layoutY="55.0" promptText="Supplier Name" GridPane.rowIndex="2" />
+                        <GridPane prefHeight="31.0" prefWidth="307.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXButton fx:id="btnUpdateStock" buttonType="RAISED" onAction="#UpdateStock" prefWidth="100.0" style="-fx-background-color: #3498db;" text="Update" textFill="WHITE">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#2023c7" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                              <JFXButton fx:id="btnDeleteStock" buttonType="RAISED" onAction="#DeleteStock" prefWidth="100.0" style="-fx-background-color: #e74c3c;" text="Delete" textFill="WHITE" GridPane.columnIndex="1">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#b52020" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                              <JFXButton fx:id="btnAddStock" buttonType="RAISED" onAction="#AddStock" prefWidth="100.0" style="-fx-background-color: #27ae60;" text="Add" textFill="WHITE" GridPane.columnIndex="2">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#21b536" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                           </children>
+                        </GridPane>
+                        <Label fx:id="lblStockId" prefWidth="320.0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXButton buttonType="RAISED" onAction="#logOut" prefWidth="100.0" style="-fx-background-color: #c0392b;" text="Log Out" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="RIGHT">
+                           <ripplerFill>
+                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </RadialGradient>
+                           </ripplerFill>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXTextField fx:id="txtQty" promptText="Qty" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Drug has Stock">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <GridPane layoutY="45.0" prefHeight="200.0" prefWidth="1100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="320.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="320.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="320.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXTextField promptText="Drug Id" GridPane.rowIndex="1" />
+                        <JFXTextField promptText="Drug Name" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <JFXTextField promptText=" Trade Name" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <JFXTextField layoutX="10.0" layoutY="12.0" promptText="Stock Id" GridPane.rowIndex="2" />
+                        <JFXTextField layoutX="10.0" layoutY="12.0" promptText="Drug Id" text="Cost" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <JFXTextField layoutX="375.0" layoutY="47.0" promptText="Drug Id" text="Sell Price" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <GridPane prefHeight="31.0" prefWidth="307.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXButton buttonType="RAISED" prefWidth="100.0" style="-fx-background-color: #3498db;" text="Update" textFill="WHITE">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#28249e" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                              <JFXButton buttonType="RAISED" prefWidth="100.0" style="-fx-background-color: #e74c3c;" text="Delete" textFill="WHITE" GridPane.columnIndex="1">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#a12725" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                              <JFXButton buttonType="RAISED" prefWidth="100.0" style="-fx-background-color: #27ae60;" text="Add" textFill="WHITE" GridPane.columnIndex="2">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#19802c" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></JFXButton>
+                           </children>
+                        </GridPane>
+                        <Label prefWidth="320.0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXButton buttonType="RAISED" onAction="#logOut" prefWidth="100.0" style="-fx-background-color: #c0392b;" text="Log Out" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="RIGHT">
+                           <ripplerFill>
+                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </RadialGradient>
+                           </ripplerFill>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </GridPane>
+                  <TableView layoutX="14.0" layoutY="258.0" prefHeight="389.0" prefWidth="1100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0">
+                     <columns>
+                        <TableColumn prefWidth="130.0" text="Drug Id" />
+                        <TableColumn prefWidth="250.0" text="Drug Name" />
+                        <TableColumn prefWidth="130.0" text="Stock Id" />
+                        <TableColumn prefWidth="150.0" text="Cost" />
+                        <TableColumn prefWidth="170.0" text="Sell Price" />
+                        <TableColumn prefWidth="250.0" text="Trade Name" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

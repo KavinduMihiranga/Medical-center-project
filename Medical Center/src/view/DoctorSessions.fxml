@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DoctorSessionsController">
+   <children>
+      <TableView fx:id="tblDoctorSessions" layoutY="89.0" prefHeight="300.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <columns>
+          <TableColumn fx:id="colSessionId" prefWidth="160.0" text="Session Id" />
+          <TableColumn fx:id="colSessionDate" prefWidth="160.0" text="Session Date" />
+            <TableColumn fx:id="colStartTime" prefWidth="160.0" text="Start Time" />
+            <TableColumn fx:id="colActivePatients" prefWidth="160.0" text="Active Patients" />
+            <TableColumn fx:id="colAvailability" prefWidth="160.0" text="Availability" />
+        </columns>
+      </TableView>
+      <Label fx:id="lblDoctor" alignment="CENTER" layoutX="200.0" layoutY="21.0" prefHeight="50.0" prefWidth="245.0" style="-fx-background-color: #0c2461;" text="label" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Engravers MT" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

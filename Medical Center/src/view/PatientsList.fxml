@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PatientsListController">
+   <children>
+      <Label fx:id="lblDoctorSession" layoutX="13.0" layoutY="18.0" prefHeight="29.0" prefWidth="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <TableView fx:id="tblPatientList" layoutX="14.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="75.0">
+        <columns>
+          <TableColumn fx:id="colAppointmentNo" prefWidth="174.0" text="Appoint No" />
+          <TableColumn fx:id="colPatientName" prefWidth="405.0" text="Patient Name" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

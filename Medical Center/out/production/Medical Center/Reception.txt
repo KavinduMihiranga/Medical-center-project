@@ -1,0 +1,204 @@
+package controller;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import model.Patient;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+
+public class ReceptionFormController {
+    public JFXButton btnExit;
+    public JFXTextField txtP_Id;
+    public JFXTextField txtP_Age;
+    public JFXTextField txtP_Name;
+    public JFXTextField txtP_Address;
+//    public JFXTextField txtP_Dob;
+    public JFXTextField txtP_PhoneNo;
+    public JFXTextField txtP_Nic;
+    public TableView tblPatient;
+    public TableColumn colP_Id;
+    public TableColumn colP_Name;
+    public TableColumn colP_Address;
+    public TableColumn colP_Dob;
+    public TableColumn colP_Age;
+    public TableColumn colP_Nic;
+    public TableColumn colP_phoneNo;
+    public JFXButton btnUpdate;
+    public JFXButton btnDeletePatient;
+    public JFXButton btnAddPatient;
+    public Label lblTime;
+    public Label lblDate;
+    public JFXDatePicker dpP_Dob;
+    public Label lblP_Id;
+    public JFXComboBox cmbGender;
+    public JFXTextField txtF_Name;
+    public JFXTextField txtL_Name;
+
+    public void initialize(){
+        colP_Id.setCellValueFactory(new PropertyValueFactory<>("p_Id"));
+        colP_Name.setCellValueFactory(new PropertyValueFactory<>("p_Name"));
+        colP_Nic.setCellValueFactory(new PropertyValueFactory<>("p_Nic"));
+        colP_Address.setCellValueFactory(new PropertyValueFactory<>("p_Address"));
+        colP_Age.setCellValueFactory(new PropertyValueFactory<>("p_Age"));
+        colP_Dob.setCellValueFactory(new PropertyValueFactory<>("p_Dob"));
+        colP_phoneNo.setCellValueFactory(new PropertyValueFactory<>("p_PhoneNo"));
+
+        setPatientId();
+//        loadDateAndTime();
+        try {
+            setPatientTableData();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        tblPatient.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue!=null){
+                loadPatient((Patient) newValue);
+            }
+        });
+    }
+
+
+    private void loadPatient(Patient newValue) {
+        lblP_Id.setText(newValue.getP_Id());
+        txtP_Name.setText(newValue.getP_Name());
+        txtP_Nic.setText(newValue.getP_Name());
+        txtP_Address.setText(newValue.getP_Address());
+        txtP_Age.setText(String.valueOf(newValue.getP_Age()));
+        dpP_Dob.setValue(LocalDate.parse(String.valueOf(newValue.getP_Dob())));
+        txtP_PhoneNo.setText(newValue.getP_PhoneNo());
+
+    }
+
+    public void exit(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/DashBoard.fxml");
+        Parent load= FXMLLoader.load(resource);
+        Scene scene=new Scene(load);
+        Stage stage=new Stage();
+        stage.setTitle("Main Menu");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    public void updatePatient(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        String P_Id=lblP_Id.getText();
+        String P_Name=txtP_Name.getText();
+        String P_Nic=txtP_Nic.getText();
+        String P_Address=txtP_Address.getText();
+        int P_Age= Integer.parseInt(txtP_Age.getText());
+        Date P_Dob= Date.valueOf(dpP_Dob.getValue());
+        String P_PhoneNo=txtP_PhoneNo.getText();
+
+        Patient patient=new Patient(P_Id,P_Name,P_Nic,P_Address,P_Age,P_Dob,P_PhoneNo);
+        if (new PatientController().updatePatient(patient)) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Update Patient Successfully...").show();
+        }
+        setPatientTableData();
+    }
+
+    public void deletePatient(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        if (new PatientController().deletePatient(lblP_Id.getText())){
+            new Alert(Alert.AlertType.CONFIRMATION, "Deleted").show();
+        }else{
+            new Alert(Alert.AlertType.WARNING, "Try Again").show();
+        }
+
+        setPatientTableData();
+
+    }
+
+    private void setPatientId(){
+        try {
+            lblP_Id.setText(new PatientController().getPatientId());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addPatient(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+
+        String P_Id=lblP_Id.getText();
+        String P_Name=txtP_Name.getText();
+        String P_Nic=txtP_Nic.getText();
+        String P_Address=txtP_Address.getText();
+        int P_Age= Integer.parseInt(txtP_Age.getText());
+        Date P_Dob= Date.valueOf(dpP_Dob.getValue());
+        String P_PhoneNo=txtP_PhoneNo.getText();
+
+        Patient patient=new Patient(P_Id,P_Name,P_Nic,P_Address,P_Age,P_Dob,P_PhoneNo);
+        if (new PatientController().savePatient(patient)){
+            new Alert(Alert.AlertType.CONFIRMATION,"Add Patient Successfully...").show();
+
+        }else {
+            new Alert(Alert.AlertType.WARNING,"Try Again...").show();
+        }
+        setPatientTableData();
+        lblP_Id.setText("");
+        txtP_Name.clear();
+        txtP_Nic.clear();
+        txtP_Address.clear();
+        txtP_Age.clear();
+        dpP_Dob.setValue(null);
+        txtP_PhoneNo.clear();
+
+    }
+
+    ObservableList<Patient>observableList;
+    private void setPatientTableData() throws SQLException, ClassNotFoundException {
+        ArrayList<Patient> patients = new PatientController().getAllPatient();
+        observableList= FXCollections.observableArrayList(patients);
+        tblPatient.setItems(observableList);
+    }
+    private void loadDateAndTime() {
+        // load Date
+        java.util.Date date = new java.util.Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        lblDate.setText(f.format(date));
+
+        // load Time
+        Timeline time = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            LocalTime currentTime = LocalTime.now();
+            lblTime.setText(
+                    currentTime.getHour() + " : " + currentTime.getMinute() +
+                            " : " + currentTime.getSecond()
+            );
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        time.setCycleCount(Animation.INDEFINITE);
+        time.play();
+    }
+
+    public void logOut(ActionEvent actionEvent) {
+    }
+}

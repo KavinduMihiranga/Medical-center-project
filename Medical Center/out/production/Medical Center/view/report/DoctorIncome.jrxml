@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DoctorIncome" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13cdcc92-ca58-4227-834d-6fc70389aac5">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JDBC Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="doctorId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT s.Session_Id,(d.D_Charge * s.CurrentAppointmentNo) AS "Income for Session" FROM Doctor d INNER JOIN Session s ON d.D_Id = s.D_Id WHERE d.D_Id = $P{doctorId} GROUP BY Session_Id]]>
+	</queryString>
+	<field name="Session_Id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Session_Id"/>
+		<property name="com.jaspersoft.studio.field.label" value="Session_Id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="session"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Income for Session" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Income for Session"/>
+		<property name="com.jaspersoft.studio.field.label" value="Income for Session"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="555" height="30" uuid="ec73d2bd-718a-4676-9ab1-47e49fa24080"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Doctor Income]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="278" height="30" uuid="e5a902ad-4a25-4d33-bbc2-9d17a3637c53">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f1a88ff-30af-4e9a-bcc1-5cd31e154bce"/>
+				</reportElement>
+				<text><![CDATA[Session_Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="0" width="277" height="30" uuid="3d310c50-0143-4dad-9891-78ae6243b1ba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6c2acfeb-db1c-48fa-986a-dd2e4ccd6e91"/>
+				</reportElement>
+				<text><![CDATA[Income for Session]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="278" height="30" uuid="742070b9-c16a-4dfd-b36a-965c7b2e9fa0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f1a88ff-30af-4e9a-bcc1-5cd31e154bce"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Session_Id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="0" width="277" height="30" uuid="93a5f018-43ef-4d65-a615-ca4bc1d225b5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6c2acfeb-db1c-48fa-986a-dd2e4ccd6e91"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Income for Session}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
